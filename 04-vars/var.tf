@@ -16,3 +16,30 @@ variable "env" {}
 output "environment_variable" {
   value = var.env
 }
+variable "sample2" {
+  default = "sample2 value"
+}
+variable "sample3_list" {
+  default = [
+    "Hello",
+    "World",
+    100,
+    true
+  ]
+}
+variable "sample_map" {
+  default = {
+    string = "Helloooo",
+    number = 100,
+    boolean = true
+  }
+}
+output "sample2" {
+  value = "The single value is ${var.sample2}"
+}
+output "printing_list" {
+  value = "The first value of list is ${var.sample3_list[0]}"
+}
+output "printing_map" {
+  value = "The boolean value is ${var.sample_map["boolean"]}"
+}
