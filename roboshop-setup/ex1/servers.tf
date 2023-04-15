@@ -70,3 +70,11 @@ resource "aws_instance" "rabbitmq" {
     Name = "rabbitmq"
   }
 }
+resource "aws_instance" "redis" {
+  ami = "ami-0089b8e98cd95257d"
+  instance_type = "t2.micro"
+  vpc_security_group_ids = ["sg-0f814c32290173c7c"]
+  tags = {
+    Name = "redis"
+  }
+}
