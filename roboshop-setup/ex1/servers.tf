@@ -149,3 +149,6 @@ resource "aws_route53_record" "redis" {
   ttl     = 30
   records = [aws_instance.redis.private_ip]
 }
+output "redis_public_IP" {
+  value = "Public IP address is = ${aws_instance.redis.public_ip}"
+}
