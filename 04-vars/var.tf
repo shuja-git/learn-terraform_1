@@ -12,3 +12,7 @@ variable "cli" {}
 output "cli" {
   value = var.cli
 }
+variable "env" {}
+output "environment_variable" {
+  value = var.env
+}
