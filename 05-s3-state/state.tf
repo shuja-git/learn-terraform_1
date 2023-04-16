@@ -11,6 +11,6 @@ resource "aws_instance" "ec2" {
   instance_type = "t2.micro"
   vpc_security_group_ids = ["sg-0f814c32290173c7c"]
   tags = {
-    Name = "test"
+    Name = "demo"
   }
 }
