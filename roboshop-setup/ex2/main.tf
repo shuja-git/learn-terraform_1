@@ -10,6 +10,9 @@ resource "aws_instance" "frontend" {
   instance_type = "t2.micro"
   vpc_security_group_ids = ["sg-0f814c32290173c7c"]
 
+  tags = {
+    Name = var.instances[count.index]
+  }
 }
 variable "instances" {
   default = [
