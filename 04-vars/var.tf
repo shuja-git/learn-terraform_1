@@ -64,6 +64,6 @@ variable "d3" {
   default = ["banana","mango","apple"]
 }
 resource "null_resource" "d3_nothing" {
-  count = var.d3
+  count = length(var.d3)
 }
 
