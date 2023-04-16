@@ -15,26 +15,54 @@ data "aws_ami" "ami" {
 #  }
 #}
 
+#refering immature code
+#resource "aws_instance" "frontend" {
+#  count = length(var.names)
+#  ami =  data.aws_ami.ami.image_id
+#  instance_type =  var.types[count.index]
+#  vpc_security_group_ids = ["sg-0f814c32290173c7c"]
+#
+#  tags = {
+#    Name = var.names[count.index]
+#  }
+#}
+#Refering little mature code
 resource "aws_instance" "frontend" {
-  count = length(var.names)
+  count = length(var.demo)
   ami =  data.aws_ami.ami.image_id
-  instance_type =  var.types[count.index]
+  instance_type =  var.demo[count.index]["type"]
   vpc_security_group_ids = ["sg-0f814c32290173c7c"]
 
   tags = {
-    Name = var.names[count.index]
+    Name = var.demo[count.index]["name"]
   }
 }
+#Little matrue code
+variable "demo" {
+  default = [
+    {
+      name = "cart"
+      type = "t3.micro"
+    },
+    {
+      name = "catalogue"
+      type = "t2.micro"
+    }
+  ]
+}
 
-
+#--------------------------------
 #Immature code
-variable "names" {
-  default = ["catalogue","cart"]
-}
-variable "types" {
-  default = ["t2.micro", "t3.micro"]
-}
+#variable "names" {
+#  default = ["catalogue","cart"]
+#}
+#variable "types" {
+#  default = ["t2.micro", "t3.micro"]
+#}
+#--------------------------------------
 
+
+#Mature code
 #variable "instances" {
 #  default = {
 #    catalogue = {
