@@ -44,18 +44,27 @@
 #  value = "The boolean value is ${var.sample_map["boolean"]}"
 #}
 
-variable "d1" {
-  default = [
-    {
-      course_name = "devops"
-      trainer_name = "shuja"
-    },
-    {
-      course_name = "aws"
-      trainer_name = "Mohd"
-    }
-  ]
+#variable "d1" {
+#  default = [
+#    {
+#      course_name = "devops"
+#      trainer_name = "shuja"
+#    },
+#    {
+#      course_name = "aws"
+#      trainer_name = "Mohd"
+#    }
+#  ]
+#}
+#output "course" {
+#  value = var.d1.*.course_name
+#}
+
+variable "d3" {
+  default = ["banana","mango","apple"]
 }
-output "course" {
-  value = var.d1.*.course_name
+output "print_d3" {
+  value = var.d3
 }
+
+
