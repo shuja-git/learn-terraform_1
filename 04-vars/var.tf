@@ -63,8 +63,7 @@
 variable "d3" {
   default = ["banana","mango","apple"]
 }
-output "print_d3" {
-  value = var.d3
+resource "null_resource" "d3_nothing" {
+  count = var.d3
 }
-
 
