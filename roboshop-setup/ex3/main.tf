@@ -4,17 +4,37 @@ data "aws_ami" "ami" {
   owners           = ["973714476881"]
 }
 
-#resource "aws_instance" "frontend" {
-#  for_each = var.names
-#  ami =  data.aws_ami.ami.image_id
-#  instance_type = each.value["type"]
-#  vpc_security_group_ids = ["sg-0f814c32290173c7c"]
-#
-#  tags = {
-#    Name = each.value["name"]
-#  }
-#}
+resource "aws_instance" "instances" {
+  for_each = var.instance
+  ami =  data.aws_ami.ami.image_id
+  instance_type = each.value["type"]
+  vpc_security_group_ids = ["sg-0f814c32290173c7c"]
 
+  tags = {
+    Name = each.value["name"]
+  }
+}
+
+
+#Mature code
+variable "instance" {
+  default = {
+    catalogue = {
+      name = "catalogue"
+      type = "t2.micro"
+    }
+    user = {
+      name = "user"
+      type = "t3.micro"
+    }
+  }
+}
+output "ec2" {
+  value = aws_instance.instances
+}
+
+
+#--------------------------------------
 #refering immature code
 #resource "aws_instance" "frontend" {
 #  count = length(var.names)
@@ -27,29 +47,29 @@ data "aws_ami" "ami" {
 #  }
 #}
 #Refering little mature code
-resource "aws_instance" "frontend" {
-  count = length(var.demo)
-  ami =  data.aws_ami.ami.image_id
-  instance_type =  var.demo[count.index]["type"]
-  vpc_security_group_ids = ["sg-0f814c32290173c7c"]
-
-  tags = {
-    Name = var.demo[count.index]["name"]
-  }
-}
+#resource "aws_instance" "frontend" {
+#  count = length(var.demo)
+#  ami =  data.aws_ami.ami.image_id
+#  instance_type =  var.demo[count.index]["type"]
+#  vpc_security_group_ids = ["sg-0f814c32290173c7c"]
+#
+#  tags = {
+#    Name = var.demo[count.index]["name"]
+#  }
+#}
 #Little matrue code
-variable "demo" {
-  default = [
-    {
-      name = "cart"
-      type = "t3.micro"
-    },
-    {
-      name = "catalogue"
-      type = "t2.micro"
-    }
-  ]
-}
+#variable "demo" {
+#  default = [
+#    {
+#      name = "cart"
+#      type = "t3.micro"
+#    },
+#    {
+#      name = "catalogue"
+#      type = "t2.micro"
+#    }
+#  ]
+#}
 
 #--------------------------------
 #Immature code
@@ -62,16 +82,3 @@ variable "demo" {
 #--------------------------------------
 
 
-#Mature code
-#variable "instances" {
-#  default = {
-#    catalogue = {
-#      name = "catalogue"
-#      type = "t2.micro"
-#    }
-#    user = {
-#      name = "user"
-#      type = "t3.micro"
-#    }
-#  }
-#}
