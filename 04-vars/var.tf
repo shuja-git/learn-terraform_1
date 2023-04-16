@@ -65,5 +65,6 @@ variable "d3" {
 }
 resource "null_resource" "d3_nothing" {
   count = length(var.d3)
+
 }
 
