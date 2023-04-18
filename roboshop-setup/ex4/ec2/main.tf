@@ -12,8 +12,8 @@ resource "aws_instance" "ec2" {
     Name = var.component
   }
 }
-output "ec2_output" {
-  value = aws_instance.ec2
+output "ec2_private_ip" {
+  value = aws_instance.ec2.private_ip
 }
 
 variable "component" {}
