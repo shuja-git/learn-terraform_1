@@ -9,5 +9,5 @@ variable "test" {
   }
 }
 output "testing" {
-  value = var.test["catalogue"]
+  value = var.test["catalogue"].ec2_private_ip
 }
