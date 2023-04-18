@@ -21,6 +21,6 @@ resource "aws_security_group" "security_group_1" {
   }
 }
 
-output "sg" {
+output "sg_id" {
   value = aws_security_group.security_group_1.id
 }
