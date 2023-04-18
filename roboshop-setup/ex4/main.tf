@@ -9,6 +9,10 @@ module "sg" {
   source = "./sg"
 }
 
+output "sg_id" {
+  value = module.sg
+}
+
 variable "instances" {
   default = {
     catalogue = {
