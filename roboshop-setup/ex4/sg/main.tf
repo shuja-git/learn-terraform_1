@@ -1,5 +1,5 @@
-resource "aws_security_group" "allow_tls" {
-  name        = "allow_tls"
+resource "aws_security_group" "security_group_1" {
+  name        = "security_group_1"
   description = "allow all security group"
 
   ingress {
@@ -17,10 +17,10 @@ resource "aws_security_group" "allow_tls" {
     cidr_blocks      = ["0.0.0.0/0"]
   }
   tags = {
-    Name = "allow_tls"
+    Name = "security_group_1"
   }
 }
 
 output "sg" {
-  value = aws_security_group.allow_tls
+  value = aws_security_group.security_group_1
 }
