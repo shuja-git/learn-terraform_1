@@ -6,8 +6,17 @@ module "ec2" {
   instance_type = each.value["type"]
   sg_id = module.sg.sg_id
 }
+
 module "sg" {
   source = "./sg"
+}
+
+module "route53" {
+  source = "./route53"
+}
+
+output "ec2_out" {
+  value = module.ec2
 }
 
 output "sg_id" {

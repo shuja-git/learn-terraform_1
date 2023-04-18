@@ -12,13 +12,10 @@ resource "aws_instance" "ec2" {
     Name = var.component
   }
 }
-resource "aws_route53_record" "record" {
-  zone_id = "Z10218511FGAD8YC6L1HI"
-  name    = "${var.component}-dev.shujadevops.online"
-  type    = "A"
-  ttl     = 30
-  records = [aws_instance.ec2.private_ip]
+output "ec2_output" {
+  value = aws_instance.ec2
 }
+
 variable "component" {}
 variable "instance_type" {}
 variable "sg_id" {}
